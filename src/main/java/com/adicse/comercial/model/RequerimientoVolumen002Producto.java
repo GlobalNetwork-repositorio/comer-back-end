@@ -31,6 +31,9 @@ public class RequerimientoVolumen002Producto implements Serializable {
 
 	private BigDecimal volumen;
 
+	@Column(name="volumen_por_usuario")
+	private BigDecimal volumenPorUsuario;
+
 	//bi-directional many-to-one association to ProductoPorNumeroEntrega
 	@ManyToOne
 	@JoinColumn(name="id_producto_por_numero_entrega")
@@ -86,6 +89,14 @@ public class RequerimientoVolumen002Producto implements Serializable {
 
 	public void setVolumen(BigDecimal volumen) {
 		this.volumen = volumen;
+	}
+
+	public BigDecimal getVolumenPorUsuario() {
+		return this.volumenPorUsuario;
+	}
+
+	public void setVolumenPorUsuario(BigDecimal volumenPorUsuario) {
+		this.volumenPorUsuario = volumenPorUsuario;
 	}
 
 	public ProductoPorNumeroEntrega getProductoPorNumeroEntrega() {

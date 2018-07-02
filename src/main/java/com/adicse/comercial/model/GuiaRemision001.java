@@ -30,6 +30,9 @@ public class GuiaRemision001 implements Serializable {
 
 	private Integer numero;
 
+	@Column(name="numero_fisico")
+	private String numeroFisico;
+
 	@Column(name="orden_por_item")
 	private Integer ordenPorItem;
 
@@ -110,6 +113,14 @@ public class GuiaRemision001 implements Serializable {
 
 	public void setNumero(Integer numero) {
 		this.numero = numero;
+	}
+
+	public String getNumeroFisico() {
+		return this.numeroFisico;
+	}
+
+	public void setNumeroFisico(String numeroFisico) {
+		this.numeroFisico = numeroFisico;
 	}
 
 	public Integer getOrdenPorItem() {

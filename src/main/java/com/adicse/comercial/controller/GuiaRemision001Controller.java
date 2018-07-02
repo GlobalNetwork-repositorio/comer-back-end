@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.adicse.comercial.model.GuiaRemision001;
 import com.adicse.comercial.model.GuiaRemision002;
+import com.adicse.comercial.model.Vehiculo;
 import com.adicse.comercial.service.GuiaRemision001Service;
 import com.adicse.comercial.viewResolver.PdfGuiaRemision;
 
@@ -113,6 +114,19 @@ public class GuiaRemision001Controller {
 		
 	}
 	
+	@RequestMapping("/guiaRemisionPorCodigoModularJson")
+	public GuiaRemision001 getGuiaRemisionPorCodigoModularJson(
+			@RequestParam("anno") Integer anno,
+			@RequestParam("numeroEntrega") Integer numeroEntrega,
+			@RequestParam("codigoModular") String codigoModular
+			) {
+		
+		codigoModular = codigoModular.trim();
+		GuiaRemision001 guiaRemision001 = guiaRemision001Service.getGuiaRemisionPorCodigoModular(anno, numeroEntrega, codigoModular) ;
+		
+		return guiaRemision001;
+	}
+	
 	@RequestMapping("/guiasRemisionPorCodigoModular")
 	public List<GuiaRemision001> getGuiaRemisionPorCodigoModular(
 			@RequestParam("codigoModular") String CodigoModular){
@@ -149,4 +163,15 @@ public class GuiaRemision001Controller {
 		
 		
 	}
+	
+//	@RequestMapping("/update")
+//	@ResponseBody
+//	public GuiaRemision001 putUdate(@RequestBody GuiaRemision001 guiaRemision001) {
+//		
+//		GuiaRemision001 guiaRemisionUpdate = guiaRemision001Service.findbyid(guiaRemision001.getIdGuiaRemision001()).get();
+//		
+//		BeanUtils.copyProperties(guiaRemision001, guiaRemisionUpdate);
+//		
+//		return guiaRemision001Service.grabar(guiaRemisionUpdate);
+//	}
 }

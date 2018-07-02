@@ -41,19 +41,16 @@ public class ProductoPorNumeroEntrega implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
-
 	@Column(name="fecha_elavoracion")
 	private Date fechaElavoracion;
 
 	@Temporal(TemporalType.DATE)
 	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
-
 	@Column(name="fecha_vencimiento")
 	private Date fechaVencimiento;
 
 	@Temporal(TemporalType.DATE)
 	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
-
 	@Column(name="fecha_vencimiento1")
 	private Date fechaVencimiento1;
 

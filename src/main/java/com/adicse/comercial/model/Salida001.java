@@ -24,7 +24,6 @@ public class Salida001 implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
-
 	private Date fecha;
 
 	private Timestamp fechahorasys;
