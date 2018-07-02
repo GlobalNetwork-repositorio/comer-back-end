@@ -1,0 +1,54 @@
+	@Autowired
+	private CategoriaService categoriaService;
+	
+	public  Map<String,Object>  pagination(
+			@RequestParam("pagenumber") Integer pagenumber,
+			@RequestParam("rows") Integer rows,
+			@RequestParam("sortdireccion") String sortdireccion,
+			@RequestParam("sortcolumn") String sortcolumn,
+			@RequestParam("filters")  Object filter			
+			){
+		
+		Map<String,Object> response = new HashMap<String, Object>();
+
+		Page page = categoriaService.pagination(pagenumber, rows, sortdireccion, sortcolumn, filter);
+		
+		List<Producto> lst = page.getContent() ;
+		
+
+		response.put("data", lst);
+		response.put("totalCount", page.getTotalElements());
+		response.put("success", true);				
+		
+		return response;
+		
+		
+	}
+	
+	public Map<String,Object> save(Categoria entidad){
+		Map<String,Object> response = new HashMap<String, Object>();
+		
+		return response;
+		
+	}
+	
+	public  Map<String,Object> delete(@RequestParam("id") Integer id){
+		Map<String,Object> response = new HashMap<String, Object>();
+		
+		return response;
+	}
+	
+	public Map<String,Object> getall(){
+		
+		Map<String,Object> response = new HashMap<String, Object>();
+		
+		return response;		
+		
+	}
+	
+	public Map<String,Object> getallbyid(){
+		
+		Map<String,Object> response = new HashMap<String, Object>();
+		
+		return response;				
+	}
