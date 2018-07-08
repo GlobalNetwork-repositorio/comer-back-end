@@ -214,4 +214,5 @@ public class KardexService implements IAdicseService<Kardex, String> {
 		
 	}
 
+
 }

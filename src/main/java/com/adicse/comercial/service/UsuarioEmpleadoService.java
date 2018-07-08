@@ -94,4 +94,6 @@ public class UsuarioEmpleadoService implements IAdicseService<Usuarioempleado, I
 		iUsuarioEmpleadoDao.deleteUsuarioEmpleadoByIdusuario(idusuario);
 	}
 
+
+
 }

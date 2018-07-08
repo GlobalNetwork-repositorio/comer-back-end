@@ -130,4 +130,6 @@ public class EmpleadoService implements IAdicseService<Empleado, Integer> {
 		return iEmpleadoDao.findAllByDni(dni);
 	}
 
+
+
 }

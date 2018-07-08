@@ -96,6 +96,8 @@ public class RutaDistribucionDetalleService implements IAdicseService<RutaDistri
 		return iRutaDistribucionDetalleDao.getRutaDistribucionByCodigoModularAndNumeroEntregaAndAnno(codigoModular, numeroEntrega, anno);
 		
 	}
+
+
 	
 
 

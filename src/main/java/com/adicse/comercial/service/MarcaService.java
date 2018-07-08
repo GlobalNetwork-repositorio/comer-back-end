@@ -141,7 +141,9 @@ public class MarcaService implements IAdicseService<Marca, Integer> {
 	
 	public List<Marca> findByDscmarcaContainingIgnoreCaseOrderByDscmarcaAsc(String dscmarca){
 		return iMarcaDao.findByDscmarcaContainingIgnoreCaseOrderByDscmarcaAsc (dscmarca);
-	}	
+	}
+
+	
 	
 
 

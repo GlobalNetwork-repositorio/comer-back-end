@@ -172,6 +172,8 @@ public class CatalogoProductoQaliwarmaService implements IAdicseService<Catalogo
 		
 		return iCatalogoProductoQaliwarmaDao.getCatalogoProductoQaliwarmaByAnno(anno);
 	}
+
+
 	
 
 }

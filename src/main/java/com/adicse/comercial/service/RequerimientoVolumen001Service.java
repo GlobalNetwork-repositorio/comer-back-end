@@ -268,6 +268,8 @@ public class RequerimientoVolumen001Service implements IAdicseService<Requerimie
 	public void updateCierre(@Param("lst") Set<String> lst) {
 		iRequerimientoVolumen001Dao.updateCierre(lst);
 	}
+
+	
 	
 	
 

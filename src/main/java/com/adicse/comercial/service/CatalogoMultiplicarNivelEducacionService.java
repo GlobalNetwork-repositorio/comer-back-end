@@ -105,6 +105,8 @@ public class CatalogoMultiplicarNivelEducacionService implements IAdicseService<
 		return iCatalogoMultiplicarNivelEducacionDao.getCatalogoNivelEducacionByPeriodoNumeroEntrega(anno, numeroEntrega);
 		
 	}
+
+	
 	
 	
 

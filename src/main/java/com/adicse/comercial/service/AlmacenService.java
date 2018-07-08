@@ -132,4 +132,6 @@ public class AlmacenService implements IAdicseService<Almacen, Integer> {
 		return null;
 	}
 
+	
+
 }

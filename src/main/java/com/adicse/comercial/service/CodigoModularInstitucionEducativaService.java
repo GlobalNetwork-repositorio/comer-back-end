@@ -92,4 +92,6 @@ public class CodigoModularInstitucionEducativaService implements IAdicseService<
 		return iCodigoModularInstitucionEducativaDao.getCodigoModularInstitucionEducativaByIds(lst);
 	}
 
+
+
 }

@@ -90,4 +90,6 @@ public class NumeroEntregaService implements IAdicseService<NumeroEntrega, Integ
 	public List<NumeroEntrega> getByNumeroEntrega(Integer numeroEntrega){
 		return iNumeroEntregaDao.getByNumeroEntrega(numeroEntrega);
 	}
+
+
 }

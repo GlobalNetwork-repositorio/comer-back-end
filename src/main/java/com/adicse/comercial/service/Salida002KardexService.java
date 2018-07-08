@@ -118,4 +118,6 @@ public class Salida002KardexService  implements IAdicseService<Salida002kardex, 
 		
 	}
 
+	
+
 }

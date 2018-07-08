@@ -146,4 +146,6 @@ public class ItemEntregaService implements IAdicseService<ItemEntrega, String> {
 	public List<ItemEntrega> getAllByAno( Integer anno){
 		return iItemEntregaDao.getAllByAno(anno);
 	}
+
+
 }

@@ -81,4 +81,9 @@ PagingAndSortingRepository<GuiaRemision001, Integer>, JpaSpecificationExecutor<G
 			" and iEntrega.item = :item and r1.flagEstado = 1" + 
 			" group by nEntrega,epi,ha,iEntrega, ne.idNivelEducacion, ha.idHorarioAlimentacion")
 	public List<GuiasResumenPorNumeroUsuarioAndItemClass> getGuiasResumenPorNumeroUsuariosAndItem(@Param("item") String item,@Param("numeroEntrega") Integer numeroEntrega);
+	
+	
+	
+//	@Query("select p from GuiaRemision001 p where p.requerimientoVolumen001  ")
+//	public List<GuiaRemision001> getGuiasPendientesRegistroNroFisico(@Param("anno") Integer anno, @Param("numeroEntrega") Integer numeroEntrega);
 }

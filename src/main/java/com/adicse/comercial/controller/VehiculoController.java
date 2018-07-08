@@ -1,5 +1,6 @@
 package com.adicse.comercial.controller;
 
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,13 +17,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.adicse.comercial.model.Vehiculo;
 import com.adicse.comercial.service.VehiculoService;
-
 @RestController
 @RequestMapping("/res/vehiculo")
 public class VehiculoController {
 	
 	@Autowired
 	private VehiculoService vehiculoService;
+	
+
+	
 	
 	
 	@RequestMapping("/pagination")
@@ -32,12 +35,13 @@ public class VehiculoController {
 			@RequestParam("rows") Integer rows,
 			@RequestParam("sortdireccion") String sortdireccion,
 			@RequestParam("sortcolumn") String sortcolumn,
-			@RequestParam("filters")  Object filter			
+			@RequestParam("filters")  Object filters		
 			){
 		
+	
 		Map<String,Object> response = new HashMap<String, Object>();
-
-		Page<Vehiculo> page = vehiculoService.pagination(pagenumber, rows, sortdireccion, sortcolumn, filter);
+	
+		Page<Vehiculo> page = vehiculoService.pagination(pagenumber, rows, sortdireccion, sortcolumn, filters);
 		
 		List<Vehiculo> lst = page.getContent() ;
 		
@@ -46,6 +50,7 @@ public class VehiculoController {
 		response.put("success", true);				
 		
 		return response;
+	
 				
 	}	
 	

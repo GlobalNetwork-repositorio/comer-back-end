@@ -128,4 +128,6 @@ public class MotivoingresoService implements IAdicseService<Motivoingreso, Integ
 		return null;
 	}
 
+
+
 }

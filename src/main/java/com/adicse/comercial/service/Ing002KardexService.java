@@ -118,4 +118,6 @@ public class Ing002KardexService implements IAdicseService<Ing002kardex, String>
 
 	}
 
+
+
 }

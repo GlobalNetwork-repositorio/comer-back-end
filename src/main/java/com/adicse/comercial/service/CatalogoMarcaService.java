@@ -102,5 +102,6 @@ public class CatalogoMarcaService implements IAdicseService<CatalogoMarca, Strin
 		return iCatalogoMarcaDao.getCatalogoMarcaByIdProductoPorNumeroEntregaIdProductoPresentacion(idProductoPorNumeroEntrega, idProductoPresentacion);
 		
 	}
+	
 
 }

@@ -176,4 +176,6 @@ public class GuiaRemision001Service implements IAdicseService<GuiaRemision001, I
 	public List<GuiaRemision001> getGuiaRemisionPorAnoNumeroEntregaV2(Integer anno, Integer numeroEntrega){
 		return iGuiaRemision001Dao.getGuiaRemisionPorAnoNumeroEntregaV2(anno, numeroEntrega);
 	}
+
+
 }

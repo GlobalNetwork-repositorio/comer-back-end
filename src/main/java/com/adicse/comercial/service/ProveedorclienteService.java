@@ -152,4 +152,6 @@ public class ProveedorclienteService implements IAdicseService<Proveedorcliente,
 	}
 
 
+
+
 }

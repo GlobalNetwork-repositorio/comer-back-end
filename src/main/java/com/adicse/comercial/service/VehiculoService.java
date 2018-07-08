@@ -1,5 +1,9 @@
 package com.adicse.comercial.service;
 
+
+
+import static com.adicse.comercial.specification.SpecificationBuilder.selectFrom;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -9,14 +13,16 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.adicse.comercial.dao.IVehiculoDao;
-import com.adicse.comercial.especification.VehiculoSpecification;
 import com.adicse.comercial.model.Vehiculo;
-import com.adicse.comercial.shared.CustomFilterSpec;
+import com.adicse.comercial.specification.ConvertObjectToFormatJson;
+import com.adicse.comercial.specification.Filter;
+
+
+
 
 @Service
 @Transactional
@@ -25,48 +31,30 @@ public class VehiculoService implements IAdicseService<Vehiculo, Integer> {
 	@Autowired
 	private IVehiculoDao iVehiculoDao;
 	
+	@Autowired
+	private ConvertObjectToFormatJson convertObjectToFormatJson; 
+	
 	@Override
 	public Page<?> paginationParmsExtra(Integer pagenumber, Integer rows, String sortdireccion, String sortcolumn,
 			Object filter, Object paramsExtra) {
 		return null;
 	}
 
+	
+	
 	@Override
 	public Page<Vehiculo> pagination(Integer pagenumber, Integer rows, String sortdireccion, String sortcolumn,
 			Object filter) {
+		
 		Sort sort = new Sort(sortdireccion.toUpperCase() == "DESC" ? Direction.DESC : Direction.ASC, sortcolumn);
 		Pageable pageable =  PageRequest.of(pagenumber, rows, sort);
+		
+		Filter f = convertObjectToFormatJson.ConvertObjectToFormatSpecification(filter);
 
-		/*  
-		 * instanciamos una entidad la cual servira de contenedor para realizar el filtro
-		 * este evento sera llenado dentro de una funcion que esta en CustomFilterSpec
-		 * se le debe pasar dos parametros, uno la entidad que queremos llenar con los datos 
-		 * del segundo parametro que es un objecto json que se para en la variable filter  
-		 */
-		Vehiculo entidad = new Vehiculo();
-		entidad.setIdVehiculo(null);
-		entidad.setNumeroPlaca(null);
-		
-		
-
-		CustomFilterSpec efs = new CustomFilterSpec();
-		try {
-			
-			entidad = (Vehiculo) efs.CreateCustomFilter(entidad, filter);
-		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		/* Specification nos permite agregar implicitamente los where que se pasaran al evento findAll,
-		 * Esto sucede en CrudRepository
-		 */
-		Specification<Vehiculo> spec = new VehiculoSpecification(entidad);
-		
-		Page<Vehiculo> lista = iVehiculoDao.findAll(spec,pageable);
+		Page<Vehiculo> lista = selectFrom(iVehiculoDao).where(f).findPage(pageable);
+	
  
 
-		//
 		return lista;
 	}
 
@@ -127,5 +115,7 @@ public class VehiculoService implements IAdicseService<Vehiculo, Integer> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 
 }

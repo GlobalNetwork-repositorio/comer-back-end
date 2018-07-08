@@ -130,38 +130,19 @@ public class CategoriaService implements IAdicseService<Categoria, Integer> {
 		return iCategoriaDao.count();
 	}
 
-	@SuppressWarnings("unchecked")
-	@Override
-	public Optional<Categoria> EntityForSpecificatios(Categoria entidad, Object filter) {
-		// TODO Auto-generated method stub
-		@SuppressWarnings("rawtypes")
-		Class _class = (Class) entidad.getClass();
-		Object newEntity = null;
-		try {
-			newEntity = _class.newInstance();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-		
-		CustomFilterSpec efs = new CustomFilterSpec();
-		try {
-			
-			entidad = (Categoria) efs.CreateCustomFilter(newEntity, filter);
-		} catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
-		return (Optional<Categoria>) newEntity;
-	}
+
 
 
 	public List<Categoria> findByDsccategoriaContainingIgnoreCaseOrderByDsccategoriaAsc(String dsccategoria){
 		return iCategoriaDao.findByDsccategoriaContainingIgnoreCaseOrderByDsccategoriaAsc (dsccategoria);
 	}
+
+	@Override
+	public Optional<Categoria> EntityForSpecificatios(Categoria entidad, Object filter) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 }

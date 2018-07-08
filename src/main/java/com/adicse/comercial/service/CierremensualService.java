@@ -331,4 +331,6 @@ public class CierremensualService implements IAdicseService<Cierremensual, Integ
 		
 		return response;
 	}
+
+
 }

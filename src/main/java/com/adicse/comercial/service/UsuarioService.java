@@ -147,4 +147,6 @@ public class UsuarioService implements IAdicseService<Usuario, Integer> {
 		return null;
 	}
 
+	
+
 }

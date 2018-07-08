@@ -192,4 +192,6 @@ public class Ing001Service implements IAdicseService<Ing001, Integer> {
 		return null;
 	}
 
+	
+
 }

@@ -146,4 +146,5 @@ public class RutaDistribucionService implements IAdicseService<RutaDistribucion,
 		return iRutaDistribucionDao.getRutaDistribucionByAnnoAndNumeroEntrega(anno, numeroEntrega);
 	}
 
+
 }

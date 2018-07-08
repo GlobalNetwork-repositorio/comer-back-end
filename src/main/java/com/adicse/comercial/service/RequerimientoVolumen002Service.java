@@ -3,8 +3,6 @@ package com.adicse.comercial.service;
 import java.util.List;
 import java.util.Optional;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -100,5 +98,7 @@ public class RequerimientoVolumen002Service implements IAdicseService<Requerimie
 	public void deleteAll(Integer anno,Integer numeroEntrega) {
 		iRequerimientoVolumen002Dao.deleteAll(anno,numeroEntrega);
 	}
+
+
 
 }

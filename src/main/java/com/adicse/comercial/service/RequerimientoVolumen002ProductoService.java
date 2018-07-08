@@ -140,4 +140,6 @@ public class RequerimientoVolumen002ProductoService implements IAdicseService<Re
 		iRequerimientoVolumen002ProductoDao.deleteAll();
 	}
 
+
+
 }

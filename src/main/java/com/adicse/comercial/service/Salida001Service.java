@@ -205,6 +205,8 @@ public class Salida001Service implements IAdicseService<Salida001, Integer> {
 	public BigDecimal sumByPeriodoProducto(Periodoalmacen periodoalmacen,Producto producto){
 		return iSalida002Dao.sumByPeriodoProducto(periodoalmacen, producto);
 	}
+
+
 	
 	
 

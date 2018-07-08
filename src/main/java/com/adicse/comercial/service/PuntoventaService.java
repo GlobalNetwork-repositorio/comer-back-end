@@ -134,4 +134,6 @@ public class PuntoventaService implements IAdicseService<Puntoventa, Integer> {
 		return iPuntoventaDao.getPuntoVentaByMac(macs);
 	}
 
+
+
 }

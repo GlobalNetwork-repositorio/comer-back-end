@@ -13,6 +13,7 @@ public interface IAdicseService <T,ID > {
 	
 	public Page<?> paginationParmsExtra(Integer pagenumber, Integer rows, String sortdireccion, String  sortcolumn, Object filter, Object paramsExtra );
 	
+	
 	public List<T> getall();
 	
 	public List<T> getallbyid(List<?> lst );

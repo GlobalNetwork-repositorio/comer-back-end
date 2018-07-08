@@ -17,7 +17,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.adicse.comercial.model.GuiaRemision001;
 import com.adicse.comercial.model.GuiaRemision002;
-import com.adicse.comercial.model.Vehiculo;
 import com.adicse.comercial.service.GuiaRemision001Service;
 import com.adicse.comercial.viewResolver.PdfGuiaRemision;
 

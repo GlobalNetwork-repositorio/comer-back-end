@@ -101,4 +101,6 @@ public class Ing002Service implements IAdicseService<Ing002, String> {
 		return iIng002Dao.getIng002ByProductoAndPeriodoalmacen(producto, periodoalmacen) ;
 		
 	}
+
+
 }

@@ -99,6 +99,8 @@ public class EntregaPorItemService implements IAdicseService<EntregaPorItem, Str
 	public List<EntregaPorItem> getListEntregaPorAnnoAndNumeroEntrega(Integer anno, Integer numeroEntrega){
 		return iEntregaPorItemDao.getListEntregaPorAnnoAndNumeroEntrega(anno, numeroEntrega);
 	}
+
+
 	
 
 }

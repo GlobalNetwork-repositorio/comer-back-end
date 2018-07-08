@@ -89,6 +89,8 @@ public class CatalogoLoteService implements IAdicseService<CatalogoLote, String>
 	public List<CatalogoLote> lstCatalogoLoteByIdCatalogoMarca(String idCatalogoMarca){
 		return iCatalogoLoteDao.lstCatalogoLoteByIdCatalogoMarca(idCatalogoMarca);
 	}
+
+
 	
 
 }

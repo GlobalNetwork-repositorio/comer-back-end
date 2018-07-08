@@ -102,6 +102,9 @@ public class CodigobarraService implements IAdicseService<Codigobarra, Integer> 
 		
 		iCodigobarraDao.deleteCodigoBarraByCodigoProducto(idproducto);
 	}
+
+
+
 	
 
 

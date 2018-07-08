@@ -136,4 +136,6 @@ public class PeriodoalmacenService implements IAdicseService<Periodoalmacen, Int
 		
 		return lista;
 	}
+
+
 }
