@@ -16,13 +16,15 @@ public class ConvertObjectToFormatJson {
 	
 	public Filter ConvertObjectToFormatSpecification(Object object) {
 		
-		
+		if(object.equals("undefined")) {
+			return new Filter();
+		}
 		String s = object.toString();
 		JSONObject obj = new JSONObject();
 
 		JSONObject json = null;
 		JSONObject propiedadObj = new JSONObject();
-		String value = null;
+		String value = null, operator=null;
 			
 		json = new JSONObject(s);
 		
@@ -33,19 +35,36 @@ public class ConvertObjectToFormatJson {
 		Filter filter = new Filter();
 		
 		List<Filter> lstFilter = new ArrayList<>();
+	
+		
 		filter.setLogic("and");
 		
 		for (int i = 0; i < ajson.length(); i++) {
+	
+			
 			obj = ajson.getJSONObject(i);
+			
 			
 			for (Object key : obj.keySet()) {
 				propiedadObj = (JSONObject) obj.get(key.toString());
 				value = (String) propiedadObj.get("value");	
-	
+				operator = propiedadObj.get("matchMode") == null?"":(String) propiedadObj.get("matchMode");	
+				
+				switch (operator) {
+				case "equals":
+					operator = "eq";
+					break;
+				case "contains":
+					operator = "contains";
+					break;
+				default:
+					operator="";
+				}
 				
 				Filter filterItem = new Filter();
+		
 				filterItem.setField(key.toString());
-				filterItem.setOperator("contains");
+				filterItem.setOperator(operator);
 				filterItem.setValue(value);
 				
 				lstFilter.add(filterItem);
@@ -56,6 +75,8 @@ public class ConvertObjectToFormatJson {
 		}
 		
 		filter.setFilters(lstFilter);
+		
+		
 		return filter;
 	}
 

@@ -116,6 +116,9 @@ public class VehiculoService implements IAdicseService<Vehiculo, Integer> {
 		return null;
 	}
 
+	public List<Vehiculo> lstVehiculo(Filter filter){
+		return selectFrom(iVehiculoDao).where(filter).findAll();
+	}
 
 
 }

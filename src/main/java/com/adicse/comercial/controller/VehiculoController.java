@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.adicse.comercial.model.Vehiculo;
 import com.adicse.comercial.service.VehiculoService;
+import com.adicse.comercial.specification.Filter;
 @RestController
 @RequestMapping("/res/vehiculo")
 public class VehiculoController {
@@ -37,7 +38,6 @@ public class VehiculoController {
 			@RequestParam("sortcolumn") String sortcolumn,
 			@RequestParam("filters")  Object filters		
 			){
-		
 	
 		Map<String,Object> response = new HashMap<String, Object>();
 	
@@ -47,7 +47,7 @@ public class VehiculoController {
 		
 		response.put("data", lst);
 		response.put("totalCount", page.getTotalElements());
-		response.put("success", true);				
+		response.put("success", true);
 		
 		return response;
 	
@@ -91,5 +91,10 @@ public class VehiculoController {
 		return vehiculoService.getall();
 	}
 
+	@RequestMapping("/getall2")
+	@ResponseBody
+	public List<Vehiculo> getallchinito(@RequestBody Filter filter){
+		return vehiculoService.lstVehiculo(filter);
+	}
 
 }
