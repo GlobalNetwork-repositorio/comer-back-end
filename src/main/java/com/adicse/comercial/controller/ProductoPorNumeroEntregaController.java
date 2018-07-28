@@ -55,6 +55,22 @@ public class ProductoPorNumeroEntregaController {
 	
 	}
 	
+	
+	@RequestMapping("/getProductoPorNumeroEntregaPorNumeroEntregaAndAnnoAndItem")
+	public List<ProductoPorNumeroEntrega> getProductoPorNumeroEntregaPorNumeroEntregaAndAnnoAndItem(
+			@RequestParam("anno") Integer anno,
+			@RequestParam("numeroEntrega") Integer numeroEntrega,
+			@RequestParam("item") String item
+			) {
+		
+			List<ProductoPorNumeroEntrega> lst = productoPorNumeroEntregaService.getProductoPorNumeroEntregaPorNumeroEntregaAndAnnoAndItem(numeroEntrega, anno, item) ;
+		
+			lst.sort((a,b)-> a.getCatalogoProductoQaliwarma().getDscCatalogoProductoQaliwarma().compareTo(b.getCatalogoProductoQaliwarma().getDscCatalogoProductoQaliwarma()) );
+		return lst;
+		
+	
+	}	
+	
 	@RequestMapping("/save")
 	public ProductoPorNumeroEntrega save(@RequestBody ProductoPorNumeroEntrega productoPorNumeroEntrega) {
 		

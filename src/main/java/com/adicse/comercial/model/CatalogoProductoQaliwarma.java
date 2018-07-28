@@ -24,6 +24,30 @@ public class CatalogoProductoQaliwarma implements Serializable {
 	@Column(name="dsc_catalogo_producto_qaliwarma")
 	private String dscCatalogoProductoQaliwarma;
 
+	private Boolean entrega1;
+
+	private Boolean entrega10;
+
+	private Boolean entrega11;
+
+	private Boolean entrega12;
+
+	private Boolean entrega2;
+
+	private Boolean entrega3;
+
+	private Boolean entrega4;
+
+	private Boolean entrega5;
+
+	private Boolean entrega6;
+
+	private Boolean entrega7;
+
+	private Boolean entrega8;
+
+	private Boolean entrega9;
+
 	@Column(name="print_lote")
 	private Integer printLote;
 
@@ -83,6 +107,102 @@ public class CatalogoProductoQaliwarma implements Serializable {
 
 	public void setDscCatalogoProductoQaliwarma(String dscCatalogoProductoQaliwarma) {
 		this.dscCatalogoProductoQaliwarma = dscCatalogoProductoQaliwarma;
+	}
+
+	public Boolean getEntrega1() {
+		return this.entrega1;
+	}
+
+	public void setEntrega1(Boolean entrega1) {
+		this.entrega1 = entrega1;
+	}
+
+	public Boolean getEntrega10() {
+		return this.entrega10;
+	}
+
+	public void setEntrega10(Boolean entrega10) {
+		this.entrega10 = entrega10;
+	}
+
+	public Boolean getEntrega11() {
+		return this.entrega11;
+	}
+
+	public void setEntrega11(Boolean entrega11) {
+		this.entrega11 = entrega11;
+	}
+
+	public Boolean getEntrega12() {
+		return this.entrega12;
+	}
+
+	public void setEntrega12(Boolean entrega12) {
+		this.entrega12 = entrega12;
+	}
+
+	public Boolean getEntrega2() {
+		return this.entrega2;
+	}
+
+	public void setEntrega2(Boolean entrega2) {
+		this.entrega2 = entrega2;
+	}
+
+	public Boolean getEntrega3() {
+		return this.entrega3;
+	}
+
+	public void setEntrega3(Boolean entrega3) {
+		this.entrega3 = entrega3;
+	}
+
+	public Boolean getEntrega4() {
+		return this.entrega4;
+	}
+
+	public void setEntrega4(Boolean entrega4) {
+		this.entrega4 = entrega4;
+	}
+
+	public Boolean getEntrega5() {
+		return this.entrega5;
+	}
+
+	public void setEntrega5(Boolean entrega5) {
+		this.entrega5 = entrega5;
+	}
+
+	public Boolean getEntrega6() {
+		return this.entrega6;
+	}
+
+	public void setEntrega6(Boolean entrega6) {
+		this.entrega6 = entrega6;
+	}
+
+	public Boolean getEntrega7() {
+		return this.entrega7;
+	}
+
+	public void setEntrega7(Boolean entrega7) {
+		this.entrega7 = entrega7;
+	}
+
+	public Boolean getEntrega8() {
+		return this.entrega8;
+	}
+
+	public void setEntrega8(Boolean entrega8) {
+		this.entrega8 = entrega8;
+	}
+
+	public Boolean getEntrega9() {
+		return this.entrega9;
+	}
+
+	public void setEntrega9(Boolean entrega9) {
+		this.entrega9 = entrega9;
 	}
 
 	public Integer getPrintLote() {

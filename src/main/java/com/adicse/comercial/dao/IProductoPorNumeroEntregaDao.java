@@ -36,6 +36,16 @@ public interface IProductoPorNumeroEntregaDao extends CrudRepository<ProductoPor
 	public List<ProductoPorNumeroEntrega> getProductoPorNumeroEntregaPorNumeroEntregaAndAnnoF(
 			@Param("numeroEntrega") Integer numeroEntrega,
 			@Param("anno") Integer anno);
+	
+	
+	@Query("select p from ProductoPorNumeroEntrega p "
+			+ "where  p.entregaPorItem.numeroEntrega.numeroEntregaValor =:numeroEntrega "			
+			+ " and p.entregaPorItem.itemEntrega.anno=:anno and p.entregaPorItem.itemEntrega.item = :item ")
+	public List<ProductoPorNumeroEntrega> getProductoPorNumeroEntregaPorNumeroEntregaAndAnnoAndItem(
+			@Param("numeroEntrega") Integer numeroEntrega,
+			@Param("anno") Integer anno,
+			@Param("item") String item
+			);
 			
 }
 

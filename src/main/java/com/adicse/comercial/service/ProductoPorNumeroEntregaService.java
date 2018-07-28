@@ -117,6 +117,13 @@ public class ProductoPorNumeroEntregaService implements IAdicseService<ProductoP
 		
 		return iProductoPorNumeroEntregaDao.getProductoPorNumeroEntregaPorNumeroEntregaAndAnnoF(numeroEntrega, anno);
 	}
+	
+	public List<ProductoPorNumeroEntrega> getProductoPorNumeroEntregaPorNumeroEntregaAndAnnoAndItem(
+			Integer numeroEntrega,Integer anno,String item
+			){
+		return iProductoPorNumeroEntregaDao.getProductoPorNumeroEntregaPorNumeroEntregaAndAnnoAndItem(numeroEntrega, anno, item);
+		
+	}
 
 	
 }

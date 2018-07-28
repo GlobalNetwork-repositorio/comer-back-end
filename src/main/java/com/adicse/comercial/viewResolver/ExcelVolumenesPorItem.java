@@ -108,7 +108,9 @@ public class ExcelVolumenesPorItem extends AbstractXlsxView {
 				//}
 
 				for (RequerimientoVolumen002 requerimientoVolumen002 : requerimientoVolumen001
-						.getRequerimientoVolumen002s()) {
+						.getRequerimientoVolumen002s() ) {
+					
+					
 
 					for (RequerimientoVolumen002Producto requerimientoVolumen002Producto : requerimientoVolumen002
 							.getRequerimientoVolumen002Productos()) {

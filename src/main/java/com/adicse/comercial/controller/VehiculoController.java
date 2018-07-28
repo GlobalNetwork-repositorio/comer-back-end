@@ -1,6 +1,7 @@
 package com.adicse.comercial.controller;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -44,6 +45,9 @@ public class VehiculoController {
 		Page<Vehiculo> page = vehiculoService.pagination(pagenumber, rows, sortdireccion, sortcolumn, filters);
 		
 		List<Vehiculo> lst = page.getContent() ;
+		if(lst.size() == 0 ) {
+			 lst = new ArrayList<>();
+		}
 		
 		response.put("data", lst);
 		response.put("totalCount", page.getTotalElements());
