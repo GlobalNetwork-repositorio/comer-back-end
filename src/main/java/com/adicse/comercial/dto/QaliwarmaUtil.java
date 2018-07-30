@@ -881,7 +881,12 @@ public class QaliwarmaUtil {
 
 		for (Integer i = 0; i < totalFilas; i++) {
 			System.out.println("Proceso " + cntFilas + " de " + totalFilas);
+			
+			if(cntFilas.equals(44)) {
+				System.out.println("Proceso 44");
+			}
 			cntFilas++;
+			
 
 			volumen = lstRequerimientoVolumen002Producto.get(i).getVolumen().doubleValue();
 			volumenAux = lstRequerimientoVolumen002Producto.get(i).getVolumen().doubleValue();

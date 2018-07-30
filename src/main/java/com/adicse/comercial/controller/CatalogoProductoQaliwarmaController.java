@@ -124,6 +124,7 @@ public class CatalogoProductoQaliwarmaController {
 	@ResponseBody
 	public List<CatalogoProductoQaliwarma> getAll() {
 		List<CatalogoProductoQaliwarma> lst = catalogoProductoQaliwarmaService.getall();
+		lst.sort((a,b)-> a.getDscCatalogoProductoQaliwarma().compareTo(b.getDscCatalogoProductoQaliwarma()) );
 		
 		return lst;
 	}

@@ -2,6 +2,7 @@ package com.adicse.comercial.controller;
 
 import java.util.List;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -80,6 +81,22 @@ public class ProductoPorNumeroEntregaController {
 				productoPorNumeroEntregaService.findbyid(idProductoPorNumeroEntrega).get():new ProductoPorNumeroEntrega();
 				
 		productoPorNumeroEntregaAux.setDscComplementoProducto(productoPorNumeroEntrega.getDscComplementoProducto());	
+		
+		productoPorNumeroEntregaAux = productoPorNumeroEntregaService.grabar(productoPorNumeroEntregaAux);
+		
+		return productoPorNumeroEntregaAux;
+	}
+	
+	@RequestMapping("/update")
+	public ProductoPorNumeroEntrega update(@RequestBody ProductoPorNumeroEntrega productoPorNumeroEntrega) {
+		
+		String idProductoPorNumeroEntrega = productoPorNumeroEntrega.getIdProductoPorNumeroEntrega();
+		
+		ProductoPorNumeroEntrega productoPorNumeroEntregaAux = productoPorNumeroEntregaService.findbyid(idProductoPorNumeroEntrega).isPresent()?
+				productoPorNumeroEntregaService.findbyid(idProductoPorNumeroEntrega).get():new ProductoPorNumeroEntrega();
+				
+				BeanUtils.copyProperties(productoPorNumeroEntrega, productoPorNumeroEntregaAux);
+		//productoPorNumeroEntregaAux.setDscComplementoProducto(productoPorNumeroEntrega.getDscComplementoProducto());	
 		
 		productoPorNumeroEntregaAux = productoPorNumeroEntregaService.grabar(productoPorNumeroEntregaAux);
 		
