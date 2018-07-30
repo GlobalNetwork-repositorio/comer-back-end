@@ -67,9 +67,9 @@ public class AgregarRelaciones {
 
 		};
 		
-		//String ruta = "D:\\proyectos\\backend\\comercial\\src\\main\\java\\com\\adicse\\comercial\\model\\";
-		String ruta = "/home/ubuntu/proyectos/spring boot/comercial/src/main/java/com/adicse/comercial/model/";
+		//String ruta = "/home/ubuntu/proyectos/spring boot/comercial/src/main/java/com/adicse/comercial/model/";
 
+		String ruta = "D:\\proyectos\\backend\\comer-back-end\\src\\main\\java\\com\\adicse\\comercial\\model\\";
 		String archivoFuente = null;
 		String archivoTemporal = null;
 		String textoBuscar1 = null;

@@ -6,6 +6,7 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -112,6 +113,9 @@ public class VolumenConvertidoEnvaseService implements IAdicseService<VolumenCon
 		return iVolumenConvertidoEnvaseDao.getVolumenByIdProductoPorNumeroEntrega(idProductoPorNumeroEntrega,idItem,codigoModular,idProductoPresentacion);
 	}
 
+	public void deleteByAnnoNumeroEntregaFijo(Integer anno, Integer numeroEntrega) {
+		iVolumenConvertidoEnvaseDao.deleteByAnnoNumeroEntregaFijo(anno, numeroEntrega);
+	}
 	
 
 }

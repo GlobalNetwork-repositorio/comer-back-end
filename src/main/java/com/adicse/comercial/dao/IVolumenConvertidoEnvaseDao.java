@@ -35,6 +35,11 @@ public interface IVolumenConvertidoEnvaseDao extends CrudRepository<VolumenConve
 	public void deleteByAnnoNumeroEntrega(@Param("entregaPorItem") Set<String> entregaPorItem);
 	
 	
+	@Modifying
+	@Query("delete  from VolumenConvertidoEnvace v where v.anno = :anno and v.numeroEntrega = :numeroEntrega "
+			)
+	public void deleteByAnnoNumeroEntregaFijo(@Param("anno") Integer anno, @Param("numeroEntrega") Integer numeroEntrega);	
+	
 	@Query("select v from VolumenConvertidoEnvace v where v.entregaPorItem.idEntregaPorItem = :idItem "
 			+ " and v.catalogoMarca.idCatalogoMarca = :idCatalogoMarca "
 			+ " and v.catalogoMarca.productoPresentacion.idProductoPresentacion =:idProductoPresentacion "

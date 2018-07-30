@@ -21,6 +21,7 @@ public class ProductoPorNumeroEntregaController {
 	@Autowired
 	private ProductoPorNumeroEntregaService productoPorNumeroEntregaService;
 	
+
 	
 	@RequestMapping("/getbyanno")
 	public List<ProductoPorNumeroEntrega> getProductoPorNumeroEntregaAnno(@RequestParam("anno") Integer anno) {
@@ -99,6 +100,8 @@ public class ProductoPorNumeroEntregaController {
 		//productoPorNumeroEntregaAux.setDscComplementoProducto(productoPorNumeroEntrega.getDscComplementoProducto());	
 		
 		productoPorNumeroEntregaAux = productoPorNumeroEntregaService.grabar(productoPorNumeroEntregaAux);
+		
+		
 		
 		return productoPorNumeroEntregaAux;
 	}

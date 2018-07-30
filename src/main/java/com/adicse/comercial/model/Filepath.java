@@ -16,6 +16,9 @@ public class Filepath implements Serializable {
 	@Id
 	private Integer idruta;
 
+	@Column(name="archivos_qaliwarma")
+	private String archivosQaliwarma;
+
 	private String rutadoc;
 
 	private String rutaimages;
@@ -33,6 +36,14 @@ public class Filepath implements Serializable {
 
 	public void setIdruta(Integer idruta) {
 		this.idruta = idruta;
+	}
+
+	public String getArchivosQaliwarma() {
+		return this.archivosQaliwarma;
+	}
+
+	public void setArchivosQaliwarma(String archivosQaliwarma) {
+		this.archivosQaliwarma = archivosQaliwarma;
 	}
 
 	public String getRutadoc() {

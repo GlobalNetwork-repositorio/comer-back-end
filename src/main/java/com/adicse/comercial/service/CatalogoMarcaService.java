@@ -12,7 +12,7 @@ import com.adicse.comercial.dao.ICatalogoMarcaDao;
 import com.adicse.comercial.model.CatalogoMarca;
 
 @Service
-@Transactional(readOnly=true)
+@Transactional
 public class CatalogoMarcaService implements IAdicseService<CatalogoMarca, String> {
 	
 	@Autowired
@@ -44,7 +44,7 @@ public class CatalogoMarcaService implements IAdicseService<CatalogoMarca, Strin
 	}
 
 	@Override
-	@Transactional(readOnly=false)
+	//@Transactional(readOnly=false)
 	public CatalogoMarca grabar(CatalogoMarca entidad) {
 		// TODO Auto-generated method stub
 		return iCatalogoMarcaDao.save(entidad);
@@ -53,13 +53,14 @@ public class CatalogoMarcaService implements IAdicseService<CatalogoMarca, Strin
 	@Override
 	public void delete(CatalogoMarca entidad) {
 		// TODO Auto-generated method stub
+		iCatalogoMarcaDao.delete(entidad);
 		
 	}
 
 	@Override
 	public void deletebyid(String id) {
 		// TODO Auto-generated method stub
-		
+		iCatalogoMarcaDao.deleteById(id);
 	}
 
 	@Override

@@ -1053,6 +1053,8 @@ public class QaliwarmaUtil {
 					volumenConvertidoEnvace.setIdVolumenConvertidoEnvace(id);
 					volumenConvertidoEnvace.setRequerimientoVolumen002Producto(requerimientoVolumen002Producto);
 					volumenConvertidoEnvace.setProductoPresentacion(productoPresentacion);
+					volumenConvertidoEnvace.setAnno(anno);
+					volumenConvertidoEnvace.setNumeroEntrega(numeroEntrega );
 
 					if (volumenUnidadMinima.floatValue() > 0 && !isEquealPresentacionMinima) {
 
@@ -1285,6 +1287,12 @@ public class QaliwarmaUtil {
 				// (ids)
 				catalogoMarca = catalogoMarcaService.getCatalogoMarcaByIdProductoPorNumeroEntregaIdProductoPresentacion(
 						idProductoPorNumeroEntrega, presentacion.getIdProductoPresentacion());
+				
+				if(catalogoMarca != null) {
+					catalogoMarcaService.deletebyid(catalogoMarca.getIdCatalogoMarca());
+					catalogoMarca=null;
+				}
+				
 				if (catalogoMarca == null) {
 					catalogoMarca = new CatalogoMarca();
 					catalogoMarca.setIdCatalogoMarca(

@@ -432,6 +432,8 @@ public class QaliwarmaController {
 	@RequestMapping("/deleteVolumenConvertidoByAnnoAndNumeroEntrega")
 	@ResponseBody
 	public void deleteVolumenConvertidoByAnnoAndNumeroEntrega(@RequestParam("anno") Integer anno, @RequestParam("numeroEntrega") Integer numeroEntrega) {
+		
+		//volumenConvertidoEnvaseService.deleteByAnnoNumeroEntregaFijo(anno, numeroEntrega);
 		Set<String> idEntregaPorItem = new HashSet<>() ;
 		
 		List<EntregaPorItem> lstEntregaPorItem = entregaPorItemService.getListEntregaPorAnnoAndNumeroEntrega(anno, numeroEntrega);

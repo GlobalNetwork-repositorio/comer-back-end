@@ -21,6 +21,8 @@ public class VolumenConvertidoEnvace implements Serializable {
 	@Column(name="id_volumen_convertido_envace")
 	private String idVolumenConvertidoEnvace;
 
+	private Integer anno;
+
 	private Integer bonificacion;
 
 	private Integer cantidad;
@@ -31,6 +33,9 @@ public class VolumenConvertidoEnvace implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column(name="fecha_calculo_sys")
 	private Date fechaCalculoSys;
+
+	@Column(name="numero_entrega")
+	private Integer numeroEntrega;
 
 	private String obs;
 
@@ -75,6 +80,14 @@ public class VolumenConvertidoEnvace implements Serializable {
 		this.idVolumenConvertidoEnvace = idVolumenConvertidoEnvace;
 	}
 
+	public Integer getAnno() {
+		return this.anno;
+	}
+
+	public void setAnno(Integer anno) {
+		this.anno = anno;
+	}
+
 	public Integer getBonificacion() {
 		return this.bonificacion;
 	}
@@ -105,6 +118,14 @@ public class VolumenConvertidoEnvace implements Serializable {
 
 	public void setFechaCalculoSys(Date fechaCalculoSys) {
 		this.fechaCalculoSys = fechaCalculoSys;
+	}
+
+	public Integer getNumeroEntrega() {
+		return this.numeroEntrega;
+	}
+
+	public void setNumeroEntrega(Integer numeroEntrega) {
+		this.numeroEntrega = numeroEntrega;
 	}
 
 	public String getObs() {
