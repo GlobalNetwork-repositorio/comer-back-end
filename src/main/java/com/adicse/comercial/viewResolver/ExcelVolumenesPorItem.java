@@ -59,6 +59,9 @@ public class ExcelVolumenesPorItem extends AbstractXlsxView {
 			Integer rowNum = 3;
 			Sheet sheet = createsheet(workbook, entregaPorItem.getItemEntrega().getDscitem().toString());
 			System.out.println("ITEM : " + entregaPorItem.getItemEntrega().getDscitem());
+			if(entregaPorItem.getItemEntrega().getDscitem().equals("MORALES")) {
+				System.out.println("Item : detener"  );
+			}
 			//creamos la cabecera de la hoja
 			createHeader(workbook,sheet);
 			
@@ -369,7 +372,7 @@ public class ExcelVolumenesPorItem extends AbstractXlsxView {
 
 		}
 		//creamos la hora resumen
-		CreateSheetResumenGeneral(workbook,style);
+		CreateSheetResumenGeneral(workbook,style, numeroEntrega, anno);
 //		FileOutputStream out = new FileOutputStream("C:\\Documents and Settings\\INGENIERIA2\\Mis documentos\\Informe.xls");
 //		workbook.write(out);
 //		out.close();
@@ -377,7 +380,7 @@ public class ExcelVolumenesPorItem extends AbstractXlsxView {
 
 	}
 	
-	public void CreateSheetResumenGeneral(Workbook workbook, CellStyle style) {
+	public void CreateSheetResumenGeneral(Workbook workbook, CellStyle style, Integer numeroEntrega,Integer anno) {
 		Sheet sheet = this.createsheet(workbook, "RESUMEN");
 		
 		workbook.setSheetOrder("RESUMEN", 0);
@@ -416,6 +419,8 @@ public class ExcelVolumenesPorItem extends AbstractXlsxView {
 		Row rowRes;
 		Cell cellRes;
 		Integer nRow = 3;
+		
+		
 		lstSumaVolumenPoritemTotal.sort((SumaVolumenPorItem s1,SumaVolumenPorItem s2)-> s1.getProducto().compareTo(s2.getProducto()));
 		for(SumaVolumenPorItem suma:lstSumaVolumenPoritemTotal) {
 			rowRes = sheet.createRow(nRow++);
@@ -471,6 +476,11 @@ public class ExcelVolumenesPorItem extends AbstractXlsxView {
 		line = line.substring(0, line.length()-1);
 		cellRes.setCellValue("ITEM(S) : " + line );
 		
+		nRow++;
+		rowRes = sheet.createRow(nRow++);
+		cellRes = rowRes.createCell(4);
+		cellRes.setCellStyle(style);
+		cellRes.setCellValue("ENTREGA Nro : " + numeroEntrega + "  Año :" + anno );
 	
 		
 	}
@@ -481,7 +491,7 @@ public class ExcelVolumenesPorItem extends AbstractXlsxView {
 			
 			
 			for(SumaVolumenPorItem sumaTotal:lstSumaVolumenPoritemTotal) {
-				
+				System.out.println("Nombre de producto ExcelVolumenesPorItem fila 484 :" +sumaItem.getProducto()); 
 				if(sumaTotal.getProducto().equals(sumaItem.getProducto())) {
 					sumaTotal.setVolumen( new BigDecimal(sumaTotal.getVolumen().floatValue() + sumaItem.getVolumen().floatValue() ));
 					sumaTotal.setUsuarios(sumaTotal.getUsuarios() + sumaItem.getUsuarios());
@@ -512,6 +522,7 @@ public class ExcelVolumenesPorItem extends AbstractXlsxView {
 				lstSumaVolumenPoritemTotal.add(sumaVolumenPorItem);
 				existe=false;
 			}
+			existe=false;
 			
 		}
 		

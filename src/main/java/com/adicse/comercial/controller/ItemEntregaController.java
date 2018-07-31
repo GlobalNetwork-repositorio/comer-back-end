@@ -35,6 +35,19 @@ public class ItemEntregaController {
 		
 	}
 	
+	@RequestMapping("/getall")
+	@ResponseBody
+	public List<ItemEntrega> getItemAll(@RequestParam("anno") Integer anno){
+		
+		List<ItemEntrega> lst =  itemEntregaService.getItemByAnno(anno);
+		for(ItemEntrega row :lst) {
+			row.setEntregaPorItems(null);
+		}
+		
+		return  lst;
+		
+	}	
+	
 	@RequestMapping("/xls")
 	public ModelAndView getXls(@RequestParam("anno") Integer anno) {
 		

@@ -60,7 +60,8 @@ public class CatalogoMarcaService implements IAdicseService<CatalogoMarca, Strin
 	@Override
 	public void deletebyid(String id) {
 		// TODO Auto-generated method stub
-		iCatalogoMarcaDao.deleteById(id);
+		iCatalogoMarcaDao.deleteById(id) ;
+		System.out.println("Eliminando CatalogoMarca : " + id);
 	}
 
 	@Override

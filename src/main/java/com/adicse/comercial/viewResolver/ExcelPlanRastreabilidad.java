@@ -30,8 +30,8 @@ import com.adicse.comercial.model.GuiaRemision001;
 import com.adicse.comercial.model.GuiaRemision002;
 import com.adicse.comercial.model.ItemEntrega;
 
+public class ExcelPlanRastreabilidad extends AbstractXlsxView {
 
-public class ControlDespachoXls extends AbstractXlsxView {
 
 	public static Integer nRow;
 	public static CellStyle styleTimeNewRoman,styleFormatNumero3;
@@ -121,18 +121,20 @@ public class ControlDespachoXls extends AbstractXlsxView {
 		
 		Row row = sheet.createRow(nRow);
 		Cell cellFecha = row.createCell(1);
-		Cell cellProducto = row.createCell(2);
-		Cell cellMarca = row.createCell(3);
-		Cell cellLote = row.createCell(4);
-		Cell cellFechaVencimiento = row.createCell(5);
-		Cell cellCantidad = row.createCell(6);
-		Cell cellTransporte = row.createCell(7);
-		Cell cellItem = row.createCell(8);
-		Cell cellProvincia = row.createCell(9);
-		Cell cellDistrito = row.createCell(10);
-		Cell cellCp = row.createCell(11);
+		Cell cellItem = row.createCell(2);
+		Cell cellCantidad = row.createCell(3);
+		Cell cellProducto = row.createCell(4);
+		Cell cellLote = row.createCell(5);
+		Cell cellMarca = row.createCell(6);
+		Cell cellFechaVencimiento = row.createCell(7);
+		
+		//Cell cellTransporte = row.createCell(8);
+		Cell cellNroPlaca = row.createCell(8);
+		Cell cellNroBrevete = row.createCell(9);
+		Cell cellNroGuia = row.createCell(10);
+		Cell cellNombreIe = row.createCell(11);
 		Cell cellCodigoModular = row.createCell(12);
-		Cell cellNombreIe = row.createCell(13);
+		Cell cellNroUsuario = row.createCell(13);
 		Cell cellDireccionIe = row.createCell(14);
 		
 		String numeroLote = guiaRemision002.getNumeroLote();
@@ -158,19 +160,22 @@ public class ControlDespachoXls extends AbstractXlsxView {
 		String sPresentacion = WordUtils.capitalize(sEnvase.toLowerCase())+" X "+ factorVolumenPresentacion.toString() + " "+sUnidadMedidaAbr;
 		
 		cellFecha.setCellValue( dateFormat.format( guiaRemision002.getGuiaRemision001().getFechaEmision() ) );
-		cellProducto.setCellValue(guiaRemision002.getProductoSeleccionado() + " " + sPresentacion );
-		cellMarca.setCellValue(guiaRemision002.getMarca());
-		cellLote.setCellValue(guiaRemision002.getNumeroLote());
-		cellFechaVencimiento.setCellValue( dateFormat.format(fechaVencimiento));
+		cellItem.setCellValue( itemEntrega.getDscitem() );
 		cellCantidad.setCellValue(guiaRemision002.getCantidad());
 		
-		cellItem.setCellValue( itemEntrega.getDscitem() );
+		cellProducto.setCellValue(guiaRemision002.getProductoSeleccionado() + " " + sPresentacion );
+		cellLote.setCellValue(guiaRemision002.getNumeroLote());
+		cellMarca.setCellValue(guiaRemision002.getMarca());
 		
-		cellProvincia.setCellValue(guiaRemision002.getGuiaRemision001().getRequerimientoVolumen001().getUbigeo().getNombreProvincia());
-		cellDistrito.setCellValue(guiaRemision002.getGuiaRemision001().getRequerimientoVolumen001().getUbigeo().getNombreDistrito());
-		cellCp.setCellValue(guiaRemision002.getGuiaRemision001().getRequerimientoVolumen001().getCentroPoblado());
-		cellCodigoModular.setCellValue(guiaRemision002.getGuiaRemision001().getRequerimientoVolumen001().getCodigomodularIinstitucionEducativa().getCodigoModular());
+		cellFechaVencimiento.setCellValue( dateFormat.format(fechaVencimiento));
+		
+		cellNroPlaca.setCellValue(guiaRemision002.getGuiaRemision001().getVehiculo().getNumeroPlaca());
+		cellNroBrevete.setCellValue(guiaRemision002.getGuiaRemision001().getChofer().getNumeroBrevete());
+		
+		cellNroGuia.setCellValue(guiaRemision002.getGuiaRemision001().getNumeroFisico());
 		cellNombreIe.setCellValue(guiaRemision002.getGuiaRemision001().getRequerimientoVolumen001().getCodigomodularIinstitucionEducativa().getNombreInstitucionEducativa());
+		cellCodigoModular.setCellValue(guiaRemision002.getGuiaRemision001().getRequerimientoVolumen001().getCodigomodularIinstitucionEducativa().getCodigoModular());
+		cellNroUsuario.setCellValue(guiaRemision002.getGuiaRemision001().getRequerimientoVolumen001().getNumeroUsuarios());
 		cellDireccionIe.setCellValue(guiaRemision002.getGuiaRemision001().getRequerimientoVolumen001().getCodigomodularIinstitucionEducativa().getDireccionInstitucionEducativa());
 		
 		
@@ -182,11 +187,12 @@ public class ControlDespachoXls extends AbstractXlsxView {
 		cellFechaVencimiento.setCellStyle(styleTimeNewRoman);
 		cellCantidad.setCellStyle(styleFormatNumero3);
 		cellItem.setCellStyle(styleTimeNewRoman);
-		cellProvincia.setCellStyle(styleTimeNewRoman);
-		cellDistrito.setCellStyle(styleTimeNewRoman);
-		cellCp.setCellStyle(styleTimeNewRoman);
+		cellNroPlaca.setCellStyle(styleTimeNewRoman);
+		cellNroBrevete.setCellStyle(styleTimeNewRoman);
+		cellNroGuia.setCellStyle(styleTimeNewRoman);
 		cellCodigoModular.setCellStyle(styleTimeNewRoman);
 		cellNombreIe.setCellStyle(styleTimeNewRoman);
+		cellNroUsuario.setCellStyle(styleTimeNewRoman);
 		cellDireccionIe.setCellStyle(styleTimeNewRoman);
 		
 		nRow++;
@@ -231,8 +237,8 @@ public class ControlDespachoXls extends AbstractXlsxView {
 		cellHeader.setCellValue("INVERSIONES");
 		cellHeader.setCellStyle(style);
 
-		cellHeader = rowHeader.createCell(4);
-		cellHeader.setCellValue("CONTROL DE DESPACHO");
+		cellHeader = rowHeader.createCell(3);
+		cellHeader.setCellValue("PLAN DE RASTREABILIDAD Y PRODUCTOS NO CONFORMES");
 		cellHeader.setCellStyle(style);
 
 		cellHeader = rowHeader.createCell(9);
@@ -285,7 +291,7 @@ public class ControlDespachoXls extends AbstractXlsxView {
 		sheet.addMergedRegion(new CellRangeAddress(nRow, nRow + 3, 7, 7));
 		
 		sheet.addMergedRegion(new CellRangeAddress(nRow, nRow + 1, 8, 9));
-		sheet.addMergedRegion(new CellRangeAddress(nRow, nRow + 1, 10,14));
+		sheet.addMergedRegion(new CellRangeAddress(nRow, nRow + 1, 10, 14));
 		
 		//Sub header
 		sheet.addMergedRegion(new CellRangeAddress(nRow + 2, nRow + 3 , 8, 8));
@@ -330,45 +336,48 @@ public class ControlDespachoXls extends AbstractXlsxView {
 	
 
 		cellHeader = rowHeader.createCell(2);
-		cellHeader.setCellValue("PRODUCTO");
+		cellHeader.setCellValue("ITEM");
 		cellHeader.setCellStyle(style);
 
 		cellHeader = rowHeader.createCell(3);
-		cellHeader.setCellValue("MARCA");
+		cellHeader.setCellValue("CANTIDAD (Unid.)");
 		cellHeader.setCellStyle(style);
 
 		cellHeader = rowHeader.createCell(4);
-		cellHeader.setCellValue("LOTE");
+		cellHeader.setCellValue("PRODUCTO");
 		cellHeader.setCellStyle(style);
 		
 		cellHeader = rowHeader.createCell(5);
-		cellHeader.setCellValue("FECHA VENCIMIENTO");
+		cellHeader.setCellValue("LOTE");
 		cellHeader.setCellStyle(style);
 		
 		cellHeader = rowHeader.createCell(6);
-		cellHeader.setCellValue("CANTIDAD (Unid.)");
+		cellHeader.setCellValue("MARCA/PRESENTACION");
 		cellHeader.setCellStyle(style);
 		
 		cellHeader = rowHeader.createCell(7);
-		cellHeader.setCellValue("TRANSPORTE HIGIENE");
+		cellHeader.setCellValue("FECHA VCMTO");
 		cellHeader.setCellStyle(style);
 		
 		cellHeader = rowHeader.createCell(8);
-		cellHeader.setCellValue("LUGAR DE DESTINO");
+		cellHeader.setCellValue("TRANSPORTISTA");
 		cellHeader.setCellStyle(style);
 		
 
 		cellHeader = rowSubHeader.createCell(8);
-		cellHeader.setCellValue("ITEM");
+		cellHeader.setCellValue("TRANS. N° PLACA");
 		cellHeader.setCellStyle(style);
 		
+		cellHeader = rowSubHeader.createCell(9);
+		cellHeader.setCellValue("TRANS. N° BREVETE");
+		cellHeader.setCellStyle(style);		
 		
-		cellHeader = row4.createCell(8);
-		cellHeader.setCellStyle(style);
+//		cellHeader = row4.createCell(11);
+//		cellHeader.setCellStyle(style);
 		
 		//-----------------PROVINCIA-----------------------
-		cellHeader = rowSubHeader.createCell(9);
-		cellHeader.setCellValue("PROVINCIA");
+		cellHeader = rowHeader.createCell(10);
+		cellHeader.setCellValue("LUGAR DESTINO");
 		cellHeader.setCellStyle(style);
 	
 		
@@ -377,14 +386,14 @@ public class ControlDespachoXls extends AbstractXlsxView {
 	
 		//-----------------DISTRITO----------------------------
 		cellHeader = rowSubHeader.createCell(10);
-		cellHeader.setCellValue("DISTRITO");
+		cellHeader.setCellValue("NRO GUIA REMISION");
 		cellHeader.setCellStyle(style);
 		
 	
 		//-----------------------------------
 		
 		cellHeader = rowSubHeader.createCell(11);
-		cellHeader.setCellValue("CP");
+		cellHeader.setCellValue("NOMBRE IE");
 		cellHeader.setCellStyle(style);
 	
 		cellHeader = rowSubHeader.createCell(12);
@@ -392,7 +401,7 @@ public class ControlDespachoXls extends AbstractXlsxView {
 		cellHeader.setCellStyle(style);
 	
 		cellHeader = rowSubHeader.createCell(13);
-		cellHeader.setCellValue("NOMBRE DE II.EE.");
+		cellHeader.setCellValue("NUMERO USUARIOS.");
 		cellHeader.setCellStyle(style);
 	
 		
@@ -407,9 +416,9 @@ public class ControlDespachoXls extends AbstractXlsxView {
 
 		sheet.setColumnWidth(0, (int) (sheet.getColumnWidth(0) * 1.5));
 		sheet.setColumnWidth(1, (int) (sheet.getColumnWidth(1) * 2));
-		sheet.setColumnWidth(2, (int) (sheet.getColumnWidth(2) * 7));
+		sheet.setColumnWidth(2, (int) (sheet.getColumnWidth(2) * 1.5));
 		sheet.setColumnWidth(3, (int) (sheet.getColumnWidth(3) * 2));
-		sheet.setColumnWidth(4, (int) (sheet.getColumnWidth(4) * 2));
+		sheet.setColumnWidth(4, (int) (sheet.getColumnWidth(4) * 7));
 		sheet.setColumnWidth(5, (int) (sheet.getColumnWidth(5) * 2));
 		sheet.setColumnWidth(6, (int) (sheet.getColumnWidth(6) * 2));
 		sheet.setColumnWidth(7, (int) (sheet.getColumnWidth(7) * 2));
@@ -418,8 +427,10 @@ public class ControlDespachoXls extends AbstractXlsxView {
 		sheet.setColumnWidth(10, (int) (sheet.getColumnWidth(10) * 1.5));
 		sheet.setColumnWidth(11, (int) (sheet.getColumnWidth(11) * 2));
 		sheet.setColumnWidth(12, (int) (sheet.getColumnWidth(12) * 2));
-		sheet.setColumnWidth(13, (int) (sheet.getColumnWidth(13) * 4));
+		sheet.setColumnWidth(13, (int) (sheet.getColumnWidth(13) * 1.5));
 		sheet.setColumnWidth(14, (int) (sheet.getColumnWidth(14) * 4));
 	}
+
+
 
 }

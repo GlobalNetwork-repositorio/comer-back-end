@@ -43,6 +43,7 @@ import com.adicse.comercial.service.RequerimientoVolumen002ProductoService;
 import com.adicse.comercial.service.RequerimientoVolumen002Service;
 import com.adicse.comercial.service.VolumenConvertidoEnvaseService;
 import com.adicse.comercial.viewResolver.ControlDespachoXls;
+import com.adicse.comercial.viewResolver.ExcelPlanRastreabilidad;
 import com.adicse.comercial.viewResolver.ExcelVolumenesPorItem;
 import com.adicse.comercial.viewResolver.ExcelVolumenesPorItemPeso;
 
@@ -432,19 +433,19 @@ public class QaliwarmaController {
 	@RequestMapping("/deleteVolumenConvertidoByAnnoAndNumeroEntrega")
 	@ResponseBody
 	public void deleteVolumenConvertidoByAnnoAndNumeroEntrega(@RequestParam("anno") Integer anno, @RequestParam("numeroEntrega") Integer numeroEntrega) {
-		
-		//volumenConvertidoEnvaseService.deleteByAnnoNumeroEntregaFijo(anno, numeroEntrega);
-		Set<String> idEntregaPorItem = new HashSet<>() ;
-		
-		List<EntregaPorItem> lstEntregaPorItem = entregaPorItemService.getListEntregaPorAnnoAndNumeroEntrega(anno, numeroEntrega);
-		
-		for(EntregaPorItem row : lstEntregaPorItem) {
-			idEntregaPorItem.add(row.getIdEntregaPorItem());
-		}
 		System.out.println("Inicioando eliminacion ");
-		
-		
-		volumenConvertidoEnvaseService.deleteByAnnoNumeroEntrega(idEntregaPorItem);
+		volumenConvertidoEnvaseService.deleteByAnnoNumeroEntregaFijo(anno, numeroEntrega);
+//		Set<String> idEntregaPorItem = new HashSet<>() ;
+//		
+//		List<EntregaPorItem> lstEntregaPorItem = entregaPorItemService.getListEntregaPorAnnoAndNumeroEntrega(anno, numeroEntrega);
+//		
+//		for(EntregaPorItem row : lstEntregaPorItem) {
+//			idEntregaPorItem.add(row.getIdEntregaPorItem());
+//		}
+//		System.out.println("Inicioando eliminacion ");
+//		
+//		
+//		volumenConvertidoEnvaseService.deleteByAnnoNumeroEntrega(idEntregaPorItem);
 		System.out.println("Fin eliminacion ....");
 	}
 	
@@ -466,6 +467,24 @@ public class QaliwarmaController {
 		return model;
 		
 	}
+	
+	@RequestMapping("/planRastreabilidad")
+	@ResponseBody	
+	public ModelAndView planRastreabilidad(@RequestParam("anno") Integer anno, @RequestParam("numeroEntrega") Integer numeroEntrega) {
+		
+		List<GuiaRemision001Class> lstGuiaRemision = guiaRemision001Service.getGuiaRemisionPorAnoNumeroEntrega(anno, numeroEntrega);
+		
+		List<ItemEntrega> lstItemEntrega = itemEntregaService.getItemByAnno(anno);
+		
+		Map<String, Object> response = new HashMap<>();
+		response.put("data", lstGuiaRemision);
+		response.put("dataItemEntrega", lstItemEntrega);
+		response.put("numeroEntrega", numeroEntrega);
+
+		ModelAndView model = new ModelAndView(new ExcelPlanRastreabilidad(), response);
+		return model;
+		
+	}	
 	
 	@RequestMapping("/guiaValorizacionResumen")
 	@ResponseBody	
