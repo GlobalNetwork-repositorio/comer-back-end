@@ -91,7 +91,7 @@ public class AgregarJsonFormatDate {
 					cntLine++;					
 				}
 				if(textoLinea.trim().equals("@Temporal(TemporalType.DATE)") ){
-					textoLinea = "\t@JsonFormat (pattern =\"dd/MM/yyyy\", timezone=\"EST\")";
+					textoLinea = "\t@JsonFormat (pattern =\"dd/MM/yyyy\")";
 					textoLine = new TextoLine();
 					textoLine.setNrolinea(cntLine);
 					textoLine.setTexto(textoLinea);					

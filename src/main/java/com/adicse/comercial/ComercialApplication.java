@@ -1,5 +1,9 @@
 package com.adicse.comercial;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.TimeZone;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -35,6 +39,7 @@ public class ComercialApplication {
 	@Primary
 	public ObjectMapper jsonMapper() {
 	
+		DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
 		
 	    ObjectMapper mapper = new ObjectMapper();
 	    Hibernate5Module hm = new Hibernate5Module();
@@ -47,6 +52,8 @@ public class ComercialApplication {
 	    // This doesn't work with Hibernate4Module :-(
 	    //mapper.setSerializationInclusion(Include.NON_NULL);
 	    mapper.setSerializationInclusion(Include.NON_EMPTY);
+	    mapper.setDateFormat(df);
+	    mapper.setTimeZone(TimeZone.getTimeZone("EST"));
 	 
 	   
 	    return mapper;

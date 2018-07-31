@@ -40,37 +40,37 @@ public class ProductoPorNumeroEntrega implements Serializable {
 	private String dscComplementoProducto;
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
+	@JsonFormat (pattern ="dd/MM/yyyy")
 	@Column(name="fecha_elavoracion")
 	private Date fechaElavoracion;
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
+	@JsonFormat (pattern ="dd/MM/yyyy")
 	@Column(name="fecha_vencimiento")
 	private Date fechaVencimiento;
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
+	@JsonFormat (pattern ="dd/MM/yyyy")
 	@Column(name="fecha_vencimiento1")
 	private Date fechaVencimiento1;
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
+	@JsonFormat (pattern ="dd/MM/yyyy")
 	@Column(name="fecha_vencimiento2")
 	private Date fechaVencimiento2;
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
+	@JsonFormat (pattern ="dd/MM/yyyy")
 	@Column(name="fecha_vencimiento3")
 	private Date fechaVencimiento3;
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
+	@JsonFormat (pattern ="dd/MM/yyyy")
 	@Column(name="fecha_vencimiento4")
 	private Date fechaVencimiento4;
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
+	@JsonFormat (pattern ="dd/MM/yyyy")
 	@Column(name="fecha_vencimiento5")
 	private Date fechaVencimiento5;
 

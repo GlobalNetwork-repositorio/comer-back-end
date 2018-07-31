@@ -23,7 +23,7 @@ public class Ing001 implements Serializable {
 	private Integer condicionrelacioncompra;
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
+	@JsonFormat (pattern ="dd/MM/yyyy")
 	private Date fecha;
 
 	private Timestamp fechahorasys;

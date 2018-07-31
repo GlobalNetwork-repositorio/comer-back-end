@@ -23,7 +23,7 @@ public class CatalogoLote implements Serializable {
 	private Integer cantidad;
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
+	@JsonFormat (pattern ="dd/MM/yyyy")
 	@Column(name="fecha_vencimiento")
 	private Date fechaVencimiento;
 

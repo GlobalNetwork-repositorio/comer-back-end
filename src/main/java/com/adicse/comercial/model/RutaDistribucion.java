@@ -37,6 +37,11 @@ public class RutaDistribucion implements Serializable {
 	@JoinColumn(name="id_empleado_distribuidor")
 	private EmpleadoDistribuidor empleadoDistribuidor;
 
+	//bi-directional many-to-one association to Transportista
+	@ManyToOne
+	@JoinColumn(name="id_transportista")
+	private Transportista transportista;
+
 	//bi-directional many-to-one association to Vehiculo
 	@ManyToOne
 	@JoinColumn(name="id_vehiculo")
@@ -95,6 +100,14 @@ public class RutaDistribucion implements Serializable {
 
 	public void setEmpleadoDistribuidor(EmpleadoDistribuidor empleadoDistribuidor) {
 		this.empleadoDistribuidor = empleadoDistribuidor;
+	}
+
+	public Transportista getTransportista() {
+		return this.transportista;
+	}
+
+	public void setTransportista(Transportista transportista) {
+		this.transportista = transportista;
 	}
 
 	public Vehiculo getVehiculo() {

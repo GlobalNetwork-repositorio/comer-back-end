@@ -24,7 +24,7 @@ public class GuiaRemision001 implements Serializable {
 	private String estado;
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
+	@JsonFormat (pattern ="dd/MM/yyyy")
 	@Column(name="fecha_emision")
 	private Date fechaEmision;
 

@@ -23,12 +23,12 @@ public class EntregaPorItem implements Serializable {
 	private Boolean cerrado;
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
+	@JsonFormat (pattern ="dd/MM/yyyy")
 	@Column(name="fin_atencion")
 	private Date finAtencion;
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
+	@JsonFormat (pattern ="dd/MM/yyyy")
 	@Column(name="inicio_atencion")
 	private Date inicioAtencion;
 

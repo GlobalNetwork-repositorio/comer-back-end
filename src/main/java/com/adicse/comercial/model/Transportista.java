@@ -26,6 +26,10 @@ public class Transportista implements Serializable {
 	@OneToMany(mappedBy="transportista")
 	private List<GuiaRemision001> guiaRemision001s;
 
+	//bi-directional many-to-one association to RutaDistribucion
+	@OneToMany(mappedBy="transportista")
+	private List<RutaDistribucion> rutaDistribucions;
+
 	//bi-directional many-to-one association to Proveedorcliente
 	@ManyToOne
 	@JoinColumn(name="idproveedorcliente")
@@ -84,6 +88,28 @@ public class Transportista implements Serializable {
 		guiaRemision001.setTransportista(null);
 
 		return guiaRemision001;
+	}
+
+	public List<RutaDistribucion> getRutaDistribucions() {
+		return this.rutaDistribucions;
+	}
+
+	public void setRutaDistribucions(List<RutaDistribucion> rutaDistribucions) {
+		this.rutaDistribucions = rutaDistribucions;
+	}
+
+	public RutaDistribucion addRutaDistribucion(RutaDistribucion rutaDistribucion) {
+		getRutaDistribucions().add(rutaDistribucion);
+		rutaDistribucion.setTransportista(this);
+
+		return rutaDistribucion;
+	}
+
+	public RutaDistribucion removeRutaDistribucion(RutaDistribucion rutaDistribucion) {
+		getRutaDistribucions().remove(rutaDistribucion);
+		rutaDistribucion.setTransportista(null);
+
+		return rutaDistribucion;
 	}
 
 	public Proveedorcliente getProveedorcliente() {

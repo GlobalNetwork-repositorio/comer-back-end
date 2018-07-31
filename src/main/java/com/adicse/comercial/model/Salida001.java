@@ -23,7 +23,7 @@ public class Salida001 implements Serializable {
 	private Integer condicionrelacionventa;
 
 	@Temporal(TemporalType.DATE)
-	@JsonFormat (pattern ="dd/MM/yyyy", timezone="EST")
+	@JsonFormat (pattern ="dd/MM/yyyy")
 	private Date fecha;
 
 	private Timestamp fechahorasys;
