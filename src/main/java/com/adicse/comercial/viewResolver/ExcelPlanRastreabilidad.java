@@ -383,7 +383,6 @@ public class ExcelPlanRastreabilidad extends AbstractXlsxView {
 		
 		//-------------------------------
 		
-	
 		//-----------------DISTRITO----------------------------
 		cellHeader = rowSubHeader.createCell(10);
 		cellHeader.setCellValue("NRO GUIA REMISION");
