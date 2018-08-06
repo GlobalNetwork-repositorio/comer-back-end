@@ -1333,7 +1333,7 @@ public class QaliwarmaUtil {
 	public void crearGuiasDeRemision(Integer anno, Integer numeroEntrega, Integer idproveedorcliente, Integer serie,
 			Integer numeroGuiaInicio) throws ExcepcionDosMarcasSinPiking {
 		
-		List<RutaDistribucion> lstRutaDistribucion = rutaDistribucionService.getRutaDistribucionByAnnoAndNumeroEntrega(anno, numeroEntrega);
+		//List<RutaDistribucion> lstRutaDistribucion = rutaDistribucionService.getRutaDistribucionByAnnoAndNumeroEntrega(anno, numeroEntrega);
 		
 
 		List<RequerimientoVolumen001> lstRequerimientoVolumen001 = requerimientoVolumen001Service
@@ -1388,14 +1388,18 @@ public class QaliwarmaUtil {
 			//RutaDistribucion rd = this.getRequerimientoVolumenFromRd(codigoModular, lstRutaDistribucion);
 			RutaDistribucionDetalle rdDao = rutaDistribucionDetalleService.getRutaDistribucionByCodigoModularAndNumeroEntregaAndAnno(codigoModular, numeroEntrega, anno);
 			//rd RutaDistribucion
+			guiaRemision001.setTransportista(requerimientoVolumen001.getEntregaPorItem().getTransportista());
 			if(rdDao == null) {
 				guiaRemision001.setVehiculo(requerimientoVolumen001.getEntregaPorItem().getVehiculo());
 				guiaRemision001.setChofer(requerimientoVolumen001.getEntregaPorItem().getChofer());
+				
 				lstString.add(codigoModular);
 			}else {
 				RutaDistribucion rd = rdDao.getRutaDistribucion();
 				guiaRemision001.setVehiculo(rd.getVehiculo());
 				guiaRemision001.setChofer(rd.getChofer());	
+				guiaRemision001.setTransportista(rd.getTransportista() );
+				guiaRemision001.setFechaEmision(rd.getFechaDistribucion());
 			}
 			rdDao = null;
 //			
@@ -1415,7 +1419,7 @@ public class QaliwarmaUtil {
 			
 		
 			
-			guiaRemision001.setTransportista(requerimientoVolumen001.getEntregaPorItem().getTransportista());
+			//
 
 			Integer cntDetalle = 1;
 			List<RequerimientoVolumen002> lstRequerimientoVolumen002 = requerimientoVolumen001
@@ -1609,23 +1613,23 @@ public class QaliwarmaUtil {
 
 	}
 
-	private RutaDistribucion getRequerimientoVolumenFromRd(String codigoModular, List<RutaDistribucion> lst) {
-		// TODO Auto-generated method stub
-		
-		for (RutaDistribucion rutaDistribucion : lst) {
-			
-			for(RutaDistribucionDetalle rd : rutaDistribucion.getRutaDistribucionDetalles()) {
-				
-				if(rd.getRequerimientoVolumen001().getCodigomodularIinstitucionEducativa().getCodigoModular().equals(codigoModular)) {
-					return rutaDistribucion;
-					
-				}
-				
-			}
-		}
-	
-		return null;
-	}
+//	private RutaDistribucion getRequerimientoVolumenFromRd(String codigoModular, List<RutaDistribucion> lst) {
+//		// TODO Auto-generated method stub
+//		
+//		for (RutaDistribucion rutaDistribucion : lst) {
+//			
+//			for(RutaDistribucionDetalle rd : rutaDistribucion.getRutaDistribucionDetalles()) {
+//				
+//				if(rd.getRequerimientoVolumen001().getCodigomodularIinstitucionEducativa().getCodigoModular().equals(codigoModular)) {
+//					return rutaDistribucion;
+//					
+//				}
+//				
+//			}
+//		}
+//	
+//		return null;
+//	}
 
 	public boolean siExistePresentacionDuplicado(Integer presentacion, List<CatalogoMarca> lst) {
 		boolean rtn = false;

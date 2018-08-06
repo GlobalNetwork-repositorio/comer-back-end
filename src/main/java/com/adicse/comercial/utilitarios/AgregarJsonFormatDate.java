@@ -22,7 +22,8 @@ public class AgregarJsonFormatDate {
 				{"GuiaRemision001"},
 				{"CatalogoLote"},
 				{"ProductoPorNumeroEntrega"},
-				{"EntregaPorItem"}		
+				{"EntregaPorItem"}		,
+				{"RutaDistribucion"}
 		};
 		
 		

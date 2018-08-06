@@ -1,9 +1,10 @@
 package com.adicse.comercial.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
-
 
 /**
  * The persistent class for the ruta_distribucion database table.
@@ -23,6 +24,11 @@ public class RutaDistribucion implements Serializable {
 
 	@Column(name="dsc_ruta_distribucion")
 	private String dscRutaDistribucion;
+
+	@Temporal(TemporalType.DATE)
+	@JsonFormat (pattern ="dd/MM/yyyy")
+	@Column(name="fecha_distribucion")
+	private Date fechaDistribucion;
 
 	@Column(name="numero_entrega")
 	private Integer numeroEntrega;
@@ -76,6 +82,14 @@ public class RutaDistribucion implements Serializable {
 
 	public void setDscRutaDistribucion(String dscRutaDistribucion) {
 		this.dscRutaDistribucion = dscRutaDistribucion;
+	}
+
+	public Date getFechaDistribucion() {
+		return this.fechaDistribucion;
+	}
+
+	public void setFechaDistribucion(Date fechaDistribucion) {
+		this.fechaDistribucion = fechaDistribucion;
 	}
 
 	public Integer getNumeroEntrega() {
