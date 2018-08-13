@@ -2,6 +2,9 @@ package com.adicse.comercial.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import java.util.List;
 
 
@@ -16,19 +19,21 @@ public class Perfilesdetalle implements Serializable {
 
 	@Id
 	private String idsysperfilesdetalle;
+	
+	//bi-directional many-to-one association to Perfil
+	@JsonBackReference
+	@ManyToOne
+	@JoinColumn(name="idperfil")	
+	private Perfil perfil;
 
 	//bi-directional many-to-one association to Menu
 	@ManyToOne
 	@JoinColumn(name="idmenu")
 	private Menu menu;
-
-	//bi-directional many-to-one association to Perfil
-	@ManyToOne
-	@JoinColumn(name="idperfil")
-	private Perfil perfil;
+	
 
 	//bi-directional many-to-one association to Perfilesdetallemantenimiento
-	@OneToMany(mappedBy="perfilesdetalle")
+	@OneToMany(mappedBy="perfilesdetalle")	
 	private List<Perfilesdetallemantenimiento> perfilesdetallemantenimientos;
 
 	public Perfilesdetalle() {

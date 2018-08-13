@@ -320,8 +320,7 @@
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.datatype</groupId>
-			<artifactId>jackson-datatype-jsr310</artifactId>
-			
+			<artifactId>jackson-datatype-jsr310</artifactId>			
 		</dependency>
 
 
@@ -337,16 +336,16 @@
 			<artifactId>jackson-annotations</artifactId>
 			
 		</dependency>
+		
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
-
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.jaxrs/jackson-jaxrs-json-provider -->
+		
 		<dependency>
 			<groupId>com.fasterxml.jackson.jaxrs</groupId>
-			<artifactId>jackson-jaxrs-json-provider</artifactId>
-			
+			<artifactId>jackson-jaxrs-json-provider</artifactId>			
 		</dependency>
 
 		<dependency>

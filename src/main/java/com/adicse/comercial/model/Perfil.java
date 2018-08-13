@@ -2,8 +2,8 @@ package com.adicse.comercial.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.util.List;
-
 
 /**
  * The persistent class for the perfil database table.
@@ -22,8 +22,11 @@ public class Perfil implements Serializable {
 	private Integer idfilial;
 
 	//bi-directional many-to-one association to Perfilesdetalle
-	@OneToMany(mappedBy="perfil")
+	// @JsonManagedReference
+	// fetch = FetchType.EAGER, 
+	@OneToMany(mappedBy="perfil", cascade = CascadeType.ALL)
 	private List<Perfilesdetalle> perfilesdetalles;
+	// private Set<Perfilesdetalle> addresses = new HashSet<Perfilesdetalle>();
 
 	//bi-directional many-to-one association to Usuario
 	@OneToMany(mappedBy="perfil")

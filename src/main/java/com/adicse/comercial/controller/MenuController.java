@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.adicse.comercial.clases.TreeMain;
 
 import com.adicse.comercial.model.Menu;
+import com.adicse.comercial.model.Perfil;
 import com.adicse.comercial.service.MenuService;
 
 @RestController
@@ -26,7 +28,7 @@ public class MenuController {
 	public Map<String,Object> getAll(){
 		
 		Map<String,Object> response = new HashMap<>();
-		List<Menu> lstMenu = menuService.getall() ;
+		List<Menu> lstMenu = menuService.getall();
 		
 		TreeMain treeMain = new TreeMain();
 		Object object = treeMain.getMain(lstMenu);
@@ -38,5 +40,5 @@ public class MenuController {
 		return response;
 		
 	}
-
+	
 }

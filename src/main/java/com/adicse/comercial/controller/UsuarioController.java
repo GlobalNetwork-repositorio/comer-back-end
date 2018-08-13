@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -181,13 +182,18 @@ public class UsuarioController {
 
 	}
 
-	@RequestMapping("/getall")
-	public List<Usuario> getall() {
-		Map<String, Object> response = new HashMap<String, Object>();
-
-		List<Usuario> lst = usuarioService.getall();
-		response.put("data", lst);
-		return lst;
+//	@RequestMapping(value="/getall", produces=MediaType.APPLICATION_JSON_VALUE)
+//	public List<Usuario> getall() {
+//		Map<String, Object> response = new HashMap<String, Object>();
+//
+//		List<Usuario> lst = usuarioService.getall();
+//		response.put("data", lst);
+//		return lst;
+//	}
+	
+	@RequestMapping(value="/getall", produces=MediaType.APPLICATION_JSON_VALUE)
+	public List<Usuario> getAll(){
+		return usuarioService.getall(); 
 	}
 
 

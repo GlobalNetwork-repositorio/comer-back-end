@@ -1,10 +1,8 @@
 package com.adicse.comercial.controller;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -20,18 +18,23 @@ public class FilialController {
 	private FilialService filialService;
 	
 	
-	@RequestMapping("/getall")
-	public Map<String,Object> findall(){
-		
-		
-		Map<String,Object> response = new HashMap<>();
-		
-		List<Filial> lst = filialService.getall();
-		
-		response.put("data", lst);
-		
-		return response;
-		
+//	@RequestMapping("/getall", produces=MediaType.APPLICATION_JSON_VALUE)
+//	public Map<String,Object> findall(){
+//		
+//		
+//		Map<String,Object> response = new HashMap<>();
+//		
+//		List<Filial> lst = filialService.getall();
+//		
+//		response.put("data", lst);
+//		
+//		return response;
+//		
+//	}
+	
+	@RequestMapping(value="/getall", produces=MediaType.APPLICATION_JSON_VALUE)
+	public List<Filial> getAll(){
+		return filialService.getall(); 
 	}
 
 }

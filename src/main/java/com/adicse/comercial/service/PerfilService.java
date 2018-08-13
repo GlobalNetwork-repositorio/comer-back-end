@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.adicse.comercial.dao.IPerfilDao;
+import com.adicse.comercial.dao.IPerfilesdetalleDao;
 import com.adicse.comercial.especification.PerfilSpecification;
 import com.adicse.comercial.model.Perfil;
 import com.adicse.comercial.shared.CustomFilterSpec;
@@ -24,8 +25,10 @@ import com.adicse.comercial.shared.CustomFilterSpec;
 public class PerfilService implements IAdicseService<Perfil, Integer> {
 	
 	@Autowired
-	private IPerfilDao iPerfilDao;
+	private IPerfilDao iPerfilDao;	
 	
+	@Autowired
+	private IPerfilesdetalleDao iPerfilesdetalleDao;	
 	
 	@Override
 	public Page<?> paginationParmsExtra(Integer pagenumber, Integer rows, String sortdireccion, String sortcolumn,
@@ -72,7 +75,7 @@ public class PerfilService implements IAdicseService<Perfil, Integer> {
 		//
 		return lista;
 	}
-
+		
 	@Override
 	public List<Perfil> getall() {
 		// TODO Auto-generated method stub
@@ -87,20 +90,31 @@ public class PerfilService implements IAdicseService<Perfil, Integer> {
 
 	@Override
 	public Perfil grabar(Perfil entidad) {
-		// TODO Auto-generated method stub
-		return null;
+		// TODO Auto-generated method stub		
+		if ( entidad.getIdperfil() == 0 ) { 
+			Integer IdMax = iPerfilDao.getMax() == null ? 1 : iPerfilDao.getMax() + 1 ; 
+			entidad.setIdperfil(IdMax);
+		}
+		
+		iPerfilDao.save(entidad);
+		return entidad;
+	}
+	
+	public Perfil findById(Integer id) {
+		return iPerfilDao.findById(id).get();
+	}
+	
+	public void deletePerfilesdetalleByIdPerfil(Integer idperfil) {
+		iPerfilesdetalleDao.deletePerfilDetalleByIdPerfil(idperfil);
 	}
 
 	@Override
-	public void delete(Perfil entidad) {
-		// TODO Auto-generated method stub
-		
+	public void delete(Perfil entidad) {		
 	}
 
 	@Override
 	public void deletebyid(Integer id) {
-		// TODO Auto-generated method stub
-		
+		iPerfilDao.deleteById(id);
 	}
 
 	@Override
@@ -111,8 +125,7 @@ public class PerfilService implements IAdicseService<Perfil, Integer> {
 
 	@Override
 	public Optional<Perfil> findbyid(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return iPerfilDao.findById(id);
 	}
 
 	@Override
